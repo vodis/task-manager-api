@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
-mongoose.connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-})
+const result = dotenv.config({ path: '.env' })
+if (result.error) {
+    throw result.error;
+}
+
+mongoose.connect(process.env.MONGODB_URL)
